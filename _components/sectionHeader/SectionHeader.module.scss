@@ -1,0 +1,46 @@
+@use '../../../shared/variables.scss' as general;
+@use '../../../app/personal_variables.scss' as personal;
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding-bottom: 0.5rem;
+
+  .line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: personal.$primary-color;
+    margin: 0 1.25rem;
+
+    display: none;
+
+    @media screen and (min-width: general.$small-width ) {
+      display: block;
+    }
+
+  }
+
+  .title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.8rem;
+    color: personal.$primary-color;
+
+    @media screen and (min-width: general.$small-width ) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.sectionHeader {
+  margin-bottom: 0.5rem;
+}
+
+.subTitle {
+  color: personal.$primary-color;
+  text-align: center;
+  font-weight: normal;
+}
