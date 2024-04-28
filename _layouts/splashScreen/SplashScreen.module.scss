@@ -1,0 +1,33 @@
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+  // border-radius: 1rem;
+}
+
+.close-button:hover {
+  background-color: #f1f1f1;
+}
+
+.closeIconContainer {
+  width: 1rem;
+}
+
+.splashScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,12 @@
+@import '../../variables.scss';
+
+.button {
+  cursor: pointer;
+}
+
+.disabledButton {
+  // TODO YOU DO NOT LIKE USING IMPORTANT!!!
+  border: 1px solid $grey !important;
+  background-color: $light-grey !important;
+  color: black !important;
+}

@@ -1,0 +1,23 @@
+@use '../../variables.scss' as general;
+
+.reviews {
+
+  margin-top: 1rem;
+
+  display: flex;
+  gap: 1rem;
+
+  flex-direction: column;
+  align-items: center;
+
+
+  @media screen and (min-width: general.$small-width ) {
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: general.$large-width ) {
+    gap: 3rem;
+  }
+}

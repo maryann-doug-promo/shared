@@ -1,0 +1,40 @@
+.error {
+  color: red;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input {
+  width: 80%;
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  margin-right: 0.5rem;
+}
+
+.leaveReviewForm {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.25rem;
+
+  width: 18.5rem;
+}
+
+.successMessage {
+  color: green;
+}
+
+
+.title {
+  margin-bottom: 1rem;
+}

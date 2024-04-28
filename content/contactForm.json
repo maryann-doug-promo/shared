@@ -1,0 +1,71 @@
+{
+  "inputs": [
+    {
+      "id": "name",
+      "label": "Name",
+      "name": "name",
+      "type": "text",
+      "placeholder": "Jane Doe",
+      "minLength": 2,
+      "maxLength": 100,
+      "required": true
+    },
+    {
+      "id": "phone_number",
+      "label": "Phone Number",
+      "name": "phone_number",
+      "type": "text",
+      "placeholder": "(555) 555-5555",
+      "minLength": 10,
+      "maxLength": 20,
+      "required": true
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "name": "email",
+      "type": "text",
+      "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+      "placeholder": "email@domain.com",
+      "minLength": 5,
+      "maxLength": 100,
+      "required": true,
+      "error_message": "Please enter an email format such as janedoe@domain.com"
+    },
+    {
+      "id": "preferred_contact",
+      "label": "preferred Contact",
+      "name": "preferred_contact",
+      "type": "text",
+      "placeholder": "text",
+      "minLength": 2,
+      "maxLength": 50,
+      "required": true
+    },
+    {
+      "id": "address",
+      "label": "Address",
+      "name": "address",
+      "type": "text",
+      "placeholder": "Address (Street, City, Zip Code)",
+      "minLength": 5,
+      "maxLength": 100,
+      "required": true
+    }
+  ],
+  "textareas": [
+    {
+      "id": "message",
+      "label": "Message",
+      "name": "message",
+      "placeholder": "Tell us a little about yourself and what you are looking for.",
+      "minLength": 2,
+      "maxLength": 2000,
+      "required": true,
+      "rows": 5
+    }
+  ],
+  "submitButton": {
+    "text": "Send"
+  }
+}

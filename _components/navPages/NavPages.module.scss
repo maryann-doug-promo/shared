@@ -1,0 +1,19 @@
+@use '../../../shared/variables.scss' as general;
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  width: 90%;
+
+  @media screen and (min-width: general.$small-width ) {
+    width: 80%
+  }
+
+  @media screen and (min-width: general.$large-width ) {
+    width: 70%;
+  }
+
+}
