@@ -15,7 +15,7 @@ interface HeaderLinkProps {
   page: PageLinkType
 }
 
-export const HeaderLink = ({ page }: HeaderLinkProps) => {
+export const PageLink = ({ page }: HeaderLinkProps) => {
   const pathname = usePathname()
   return (
     <Link
