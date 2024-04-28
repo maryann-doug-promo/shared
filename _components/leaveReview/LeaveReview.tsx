@@ -15,10 +15,11 @@ import { SplashScreen } from '@/shared/_layouts/splashScreen/SplashScreen';
 
 interface LeaveReviewProps {
   classNameButton?: string;
+  classNameForm?: string;
   buttonText?: string;
 }
 
-export const LeaveReview = ({ classNameButton, buttonText }: LeaveReviewProps) => {
+export const LeaveReview = ({ classNameButton, classNameForm, buttonText }: LeaveReviewProps) => {
 
   const [leaveNewReview, setLeaveNewReview] = useState(false);
 
@@ -32,6 +33,8 @@ export const LeaveReview = ({ classNameButton, buttonText }: LeaveReviewProps) =
         >
           <LeaveReviewForm
             page="reviews"
+            className={classNameForm}
+            classNameButton={classNameButton}
             handleCloseForm={() => {
               setLeaveNewReview(false);
             }}

@@ -26,10 +26,12 @@ const initialState: LeaveReviewStateType = {
 
 interface LeaveReviewFormProps {
   page: string;
+  className?: string;
+  classNameButton?: string;
   handleCloseForm: () => void;
 }
 
-export const LeaveReviewForm = ({ page, handleCloseForm }: LeaveReviewFormProps) => {
+export const LeaveReviewForm = ({ page, className, classNameButton, handleCloseForm }: LeaveReviewFormProps) => {
 
   const [leaveReviewState, leaveReview] = useFormState(leaveReviewAction, initialState);
   const [showMessage, setShowMessage] = useState<boolean>(false);
@@ -57,11 +59,12 @@ export const LeaveReviewForm = ({ page, handleCloseForm }: LeaveReviewFormProps)
   }, [leaveReviewState, handleCloseForm]);
 
   return (
-    <form className={styles.leaveReviewForm} action={leaveReview} ref={formRef}>
+    <form className={classNames(styles.leaveReviewForm, className)} action={leaveReview} ref={formRef}>
       <h2 className={styles.title}>Leave a new review</h2>
       <div className={styles.fields}>
         <div className={styles.fieldContainer}>
           <label
+            className={styles.label}
             htmlFor={`${page}-leaveReview-input-firstName`}
           >
             First Name:
@@ -79,6 +82,7 @@ export const LeaveReviewForm = ({ page, handleCloseForm }: LeaveReviewFormProps)
         </div>
         <div className={styles.fieldContainer}>
           <label
+            className={styles.label}
             htmlFor={`${page}-leaveReview-input-lastName`}
           >
             Last Name:
@@ -96,8 +100,8 @@ export const LeaveReviewForm = ({ page, handleCloseForm }: LeaveReviewFormProps)
         </div>
         <div>
           <label
-            htmlFor={`${page}-leaveReview-rating`}
             className={styles.label}
+            htmlFor={`${page}-leaveReview-rating`}
           >
             Rating:
           </label>
@@ -122,8 +126,8 @@ export const LeaveReviewForm = ({ page, handleCloseForm }: LeaveReviewFormProps)
         </div>
         <div className={styles.fieldContainer}>
           <label
-            htmlFor={`${page}-leaveReview-review-textArea`}
             className={styles.label}
+            htmlFor={`${page}-leaveReview-review-textArea`}
           >
             Review:
           </label>
@@ -139,11 +143,7 @@ export const LeaveReviewForm = ({ page, handleCloseForm }: LeaveReviewFormProps)
         </div>
         <SubmitFormButton
           text='Submit Review'
-          className={
-            classNames(
-              styles.submitButton,
-            )
-          }
+          className={classNameButton}
         />
         {(leaveReviewState.message && showMessage) && (
           <h3
