@@ -9,7 +9,7 @@
 
   flex-direction: column;
   align-items: center;
-
+  flex-wrap: wrap;
 
   @media screen and (min-width: general.$small-width ) {
     flex-direction: row;
