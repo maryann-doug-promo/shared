@@ -1,0 +1,82 @@
+@use '../../../shared/variables.scss' as general;
+
+
+.callToActionButton {
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+
+  padding: 1rem;
+
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 0.5rem;
+
+  width: 90%;
+
+  @media screen and (min-width: general.$xs-width ) {
+    width: 85%;
+  }
+
+  @media screen and (min-width: general.$small-width ) {
+    width: 55%;
+  }
+
+  @media screen and (min-width: general.$large-width ) {
+    width: 45%;
+  }
+}
+
+.headlines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.headline {
+  text-align: center;
+}
+
+.innerStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25rem;
+}
+
+.subheadline {
+  text-align: center;
+  margin-top: 2rem;
+
+  width: 90%;
+
+  @media screen and (min-width: general.$small-width ) {
+    width: 75%;
+  }
+}
+
+.title {
+  text-align: center;
+
+  font-size: 2rem;
+
+  @media screen and (min-width: general.$small-width ) {
+    width: 75%;
+    font-size: 2.25rem;
+  }
+
+  @media screen and (min-width: general.$large-width ) {
+    width: 75%;
+    font-size: 2.5rem;
+  }
+}
