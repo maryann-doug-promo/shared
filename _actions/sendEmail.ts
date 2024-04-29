@@ -57,7 +57,7 @@ const sendEmail = (subject: string, html: string) => {
     },
     Message: {
       Body: {
-        Text: {
+        Html: {
           Charset: "UTF-8",
           Data: html
         }
