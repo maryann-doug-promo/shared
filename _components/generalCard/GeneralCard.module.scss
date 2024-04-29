@@ -1,0 +1,31 @@
+@use '../../variables.scss' as general;
+
+.generalCard {
+  width: 18rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.2rem;
+
+  @media screen and (min-width: general.$small-width ) {
+    font-size: 1.3rem;
+  }
+
+  @media screen and (min-width: general.$large-width ) {
+    font-size: 1.4rem;
+  }
+}
+
+.description {
+  text-align: center;
+  font-size: 1rem;
+
+  @media screen and (min-width: general.$small-width ) {
+    font-size: 1.1rem;
+  }
+
+  @media screen and (min-width: general.$large-width ) {
+    font-size: 1.2rem;
+  }
+}
