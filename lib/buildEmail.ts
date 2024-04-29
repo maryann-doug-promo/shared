@@ -9,31 +9,15 @@ import { ContactType } from "@/shared/types/contact";
 
 const HTML_THIS_WEBSITE = process.env.HTML_THIS_WEBSITE;
 
-const BASE = `
-<html lang="en">
-<head>
-  <meta charSet="utf-8" />
-  <title>The HTML5 Herald</title>
-  <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="SitePoint" />
-  <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-{BODY}
-</html>
-`;
-
 export const getReviewEmail = (review: ReviewType) => {
 
-  const body = `<body>
+  return `<body>
     <div style="margin-left: 20px; margin-right: 20px;">
         <h3 style="margin-bottom: 20px;">A new review has been submitted</h3>
         <p>Please see the review at:</p>
         <a href="${HTML_THIS_WEBSITE}/${content.approveReviewUrl}/${review.approve_token}">New Review by ${review.reviewer_name}</a>
       </div>
   </body>`;
-
-  // return BASE.replace('{BODY}', body);
-  return body;
 }
 
 export const getContactEmail = (newContact: ContactType) => {
@@ -41,7 +25,7 @@ export const getContactEmail = (newContact: ContactType) => {
 
   const newRequestWorder = process.env.EMAIL_NEW_REQUEST_WORDING || "A new request has been submitted.";
 
-  const body = `<body>
+  return `<body>
     <div style="margin-left: 20px; margin-right: 20px;">
       <h3 style="margin-bottom: 10px;">${newRequestWorder}</h3>
       <h4 style="margin-bottom: 10px;">See below for their details.</h4>
@@ -87,7 +71,4 @@ export const getContactEmail = (newContact: ContactType) => {
       </div>
     </div>
   </body>`;
-
-  // return BASE.replace('{BODY}', body);
-  return body;
 }
