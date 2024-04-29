@@ -19,7 +19,7 @@ interface GeneralCardProps {
     href: string;
     label: string;
   };
-  classNameCallToActionButton: string;
+  classNameCallToActionButton?: string;
 
 }
 
