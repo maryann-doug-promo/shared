@@ -2,19 +2,23 @@
 
 import classNames from 'classnames';
 
+// utils
+import { getTimeAgo } from '../../lib/utils';
+
 // layouts
-import { Card } from '@/shared/_layouts/card/Card';
+import { Card } from '../../_layouts/card/Card';
+
+// components
+import { Icon } from '@/app/_components/icon/Icon';
 
 // types
-import { ReviewType } from '@/shared/types/review';
+import { ReviewType } from '../../types/review';
 
 // content
 import content from '../../content/review.json';
 
 // styles
 import styles from './Review.module.scss';
-import { Icon } from '../../../app/_components/icon/Icon';
-import { getTimeAgo } from '@/shared/lib/utils';
 
 interface ReviewProps {
   review: ReviewType;
