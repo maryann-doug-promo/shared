@@ -133,6 +133,7 @@ export const LeaveReviewForm = ({ page, className, classNameButton, handleCloseF
           </label>
           <textarea
             id={`${page}-leaveReview-review-textArea`}
+            className={styles.textarea}
             minLength={2}
             maxLength={2000}
             placeholder="Leave Review"
