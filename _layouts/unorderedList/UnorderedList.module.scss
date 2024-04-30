@@ -1,7 +1,18 @@
-.unorderedList {
+@use '../../variables.scss' as general;
+
+.items {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
   list-style-position: inside;
+}
+
+.item {
+  text-indent: -1.4rem;
+  padding-left: 1.5rem;
+
+  @media screen and (min-width: general.$small-width ) {
+    text-indent: -1.5rem;
+  }
 }

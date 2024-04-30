@@ -13,11 +13,14 @@ interface UnorderedListProps {
 
 export const UnorderedList = ({ items, category, page, className }: UnorderedListProps) => {
   return (
-    <ul className={classNames(styles.unorderedList, className)}>
+    <ul className={classNames(styles.items, className)}>
       {items.map((item: string | React.ReactNode, index: number) => {
         return (
-          <li key={`${page}-${category}-${index}`}>
-            {item}
+          <li
+            className={styles.item}
+            key={`${page}-${category}-${index}`}
+          >
+            <span>{item}</span>
           </li>
         )
       })}
