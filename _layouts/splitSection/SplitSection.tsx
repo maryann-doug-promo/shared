@@ -17,6 +17,7 @@ interface SplitSectionProps {
   classNameSplitSections?: string;
   classNamePanelA?: string;
   classNamePanelB?: string;
+  classNameSectionHeader?: string;
 }
 
 export const SplitSection = ({
@@ -25,12 +26,14 @@ export const SplitSection = ({
   panelB,
   classNameSplitSections,
   classNamePanelA,
-  classNamePanelB
+  classNamePanelB,
+  classNameSectionHeader
 }: SplitSectionProps) => {
   return (
     <PageSection>
       <SectionHeader
         title={title}
+        className={classNameSectionHeader}
       />
       <div className={classNames(styles.splitSections, classNameSplitSections)}>
         <div
