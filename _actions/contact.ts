@@ -13,7 +13,6 @@ import { sendContactEmail } from "./sendEmail";
 
 // This is going to send an email to Mary so she can approve the review
 export const contactAction = async (prevState: any, formData: any) => {
-  let happened: string = "";
   try {
 
     const contact: ContactType = ContactSchema.parse({
@@ -25,13 +24,12 @@ export const contactAction = async (prevState: any, formData: any) => {
       message: formData.get("message")
     })
 
-    happened = await sendContactEmail(contact);
+    await sendContactEmail(contact);
 
     return {
       message: [
         "Your request has been sent.",
-        "You will be contacted soon!",
-        happened
+        "You will be contacted soon!"
       ],
       success: true
     }
@@ -41,8 +39,7 @@ export const contactAction = async (prevState: any, formData: any) => {
     return {
       message: [
         "An error occurred while sending the request.",
-        "Please try again.",
-        happened
+        "Please try again."
       ],
       success: false
     }

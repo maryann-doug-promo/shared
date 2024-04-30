@@ -43,7 +43,7 @@ const sendEmail = (subject: string, html: string): Promise<string> => {
   });
 }
 
-export const sendReviewEmail = async (newReview: ReviewType) => {
+export const sendReviewEmail = async (newReview: ReviewType): Promise<string> => {
 
   const subject = 'Approve a Review';
   const emailHtml = getReviewEmail(newReview);
