@@ -20,6 +20,12 @@ interface CardsSectionProps {
 }
 
 export const CardsSection = ({ title, cards, classNameCards, classNameTitle }: CardsSectionProps) => {
+
+  // Don't build the section at all if there is nothing to show
+  if (cards.length === 0) {
+    return null;
+  }
+
   return (
     <PageSection>
       <SectionHeader
