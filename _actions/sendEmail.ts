@@ -1,8 +1,5 @@
 "use server"
 
-// NODE MAILER
-const nodemailer = require("nodemailer");
-
 // AWS SES
 import ses from '../configureAWS';
 
@@ -38,10 +35,8 @@ const sendEmail = (subject: string, html: string): Promise<string> => {
 
     ses.sendEmail(params, function (err, data) {
       if (err) {
-        console.log(err);
-        resolve(JSON.stringify(err));
+        reject(JSON.stringify(err));
       } else {
-        console.log(data);
         resolve(JSON.stringify(data));
       }
     });
