@@ -14,6 +14,7 @@ interface SplitSectionProps {
   title: string;
   panelA: React.ReactNode;
   panelB: React.ReactNode;
+  classNameBackground?: string;
   classNameSplitSections?: string;
   classNamePanelA?: string;
   classNamePanelB?: string;
@@ -24,13 +25,14 @@ export const SplitSection = ({
   title,
   panelA,
   panelB,
+  classNameBackground,
   classNameSplitSections,
   classNamePanelA,
   classNamePanelB,
   classNameSectionHeader
 }: SplitSectionProps) => {
   return (
-    <PageSection>
+    <PageSection background={classNameBackground}>
       <SectionHeader
         title={title}
         className={classNameSectionHeader}
