@@ -15,11 +15,12 @@ import styles from './CardsSection.module.scss';
 interface CardsSectionProps {
   title: string;
   cards: React.ReactNode[];
+  className?: string;
   classNameCards?: string;
   classNameTitle?: string;
 }
 
-export const CardsSection = ({ title, cards, classNameCards, classNameTitle }: CardsSectionProps) => {
+export const CardsSection = ({ title, cards, className, classNameCards, classNameTitle }: CardsSectionProps) => {
 
   // Don't build the section at all if there is nothing to show
   if (cards.length === 0) {
@@ -27,7 +28,7 @@ export const CardsSection = ({ title, cards, classNameCards, classNameTitle }: C
   }
 
   return (
-    <PageSection>
+    <PageSection background={className}>
       <SectionHeader
         title={title}
         classNameTitle={classNameTitle}
