@@ -23,9 +23,10 @@ interface ReviewsProps {
   isFavorites: boolean;
   sectionTitle?: React.ReactNode;
   classNameCard?: string;
+  classNameBackground?: string;
 }
 
-export const Reviews = async ({ classNameCard, isFavorites, sectionTitle }: ReviewsProps) => {
+export const Reviews = async ({ classNameCard, isFavorites, sectionTitle, classNameBackground }: ReviewsProps) => {
   // TODO once you get caching right you implement it
   // TODO for now not enough time
   unstable_noStore();
@@ -37,7 +38,7 @@ export const Reviews = async ({ classNameCard, isFavorites, sectionTitle }: Revi
     reviews = await getReviews();
   }
   return (
-    <PageSection>
+    <PageSection background={classNameBackground}>
       {sectionTitle}
       <div className={styles.reviews}>
         {reviews.map((review: ReviewType, index: number) => {
