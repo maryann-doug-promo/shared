@@ -20,7 +20,7 @@ export const UnorderedList = ({ items, category, page, className }: UnorderedLis
             className={styles.item}
             key={`${page}-${category}-${index}`}
           >
-            <span>{item}</span>
+            {item}
           </li>
         )
       })}
