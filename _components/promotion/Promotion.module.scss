@@ -1,0 +1,101 @@
+@use '../../variables.scss' as general;
+@use '../../../app//personal_variables.scss' as personal;
+
+.desktop {
+  @media screen and (max-width: general.$small-width) {
+    display: none;
+  }
+}
+
+.mobile {
+  @media screen and (min-width: general.$small-width) {
+    display: none;
+  }
+}
+
+.panelA {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .infoHeader {
+    color: personal.$secondary-color;
+    text-align: center;
+
+    font-size: 2rem;
+
+    @media screen and (min-width: general.$small-width) {
+      font-size: 2.3rem;
+    }
+
+    @media screen and (min-width: general.$large-width) {
+      font-size: 2.5rem;
+
+    }
+
+  }
+
+  .benefit {
+    display: inline;
+    text-align: center;
+
+    .benefitTitle {
+      font-weight: bold;
+      margin-right: 0.5rem;
+
+      font-size: 1.15rem;
+
+      @media screen and (min-width: general.$small-width) {
+        font-size: 1.25rem;
+      }
+
+      @media screen and (min-width: general.$large-width) {
+        font-size: 1.35rem;
+      }
+    }
+
+    .benefitDescription {
+      font-size: 1rem;
+
+      @media screen and (min-width: general.$small-width) {
+        font-size: 1.1rem;
+      }
+
+      @media screen and (min-width: general.$large-width) {
+        font-size: 1.2rem;
+      }
+    }
+
+  }
+
+}
+
+.panelB {
+  flex: 1;
+
+  display: none;
+
+  @media screen and (min-width: general.$small-width) {
+    display: flex;
+    justify-content: center;
+  }
+
+  .image {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    width: 23rem;
+  }
+}
+
+.sectionHeader {
+  display: none;
+
+  @media screen and (min-width: general.$small-width) {
+    display: block;
+  }
+}
