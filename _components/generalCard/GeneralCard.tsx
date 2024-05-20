@@ -20,6 +20,7 @@ interface GeneralCardProps {
     label: string;
   };
   classNameCallToActionButton?: string;
+  classNameDescription?: string;
 
 }
 
@@ -28,12 +29,13 @@ export const GeneralCard = ({
   description,
   cardClassName,
   callToActionButton,
-  classNameCallToActionButton
+  classNameCallToActionButton,
+  classNameDescription
 }: GeneralCardProps) => {
   return (
     <Card className={classNames(styles.generalCard, "cardBorders", cardClassName)}>
       <h3 className={styles.title}>{title}</h3>
-      <p className={styles.description}>{description}</p>
+      <p className={classNames(styles.description, classNameDescription)}>{description}</p>
       {callToActionButton && (
         <LinkButton
           className={classNames(styles.link, classNameCallToActionButton)}
