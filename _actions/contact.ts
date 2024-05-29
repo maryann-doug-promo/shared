@@ -22,7 +22,7 @@ export const contactAction = async (prevState: any, formData: any) => {
       preferred_contact: formData.get("preferred_contact"),
       address: formData.get("address"),
       message: formData.get("message")
-    })
+    });
 
     await sendContactEmail(contact);
 
