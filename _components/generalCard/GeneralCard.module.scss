@@ -29,3 +29,20 @@
     font-size: 1.2rem;
   }
 }
+
+.list {
+  margin-left: 1rem;
+}
+
+.listItem {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+
+  @media screen and (min-width: general.$small-width ) {
+    font-size: 1.1rem;
+  }
+
+  @media screen and (min-width: general.$large-width ) {
+    font-size: 1.2rem;
+  }
+}

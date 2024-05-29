@@ -13,7 +13,8 @@ import styles from './GeneralCard.module.scss';
 
 interface GeneralCardProps {
   cardClassName?: string;
-  description: string;
+  description?: string;
+  list?: string[],
   title: string;
   callToActionButton?: {
     href: string;
@@ -21,21 +22,39 @@ interface GeneralCardProps {
   };
   classNameCallToActionButton?: string;
   classNameDescription?: string;
-
+  classNameList?: string;
 }
 
 export const GeneralCard = ({
   title,
   description,
+  list,
   cardClassName,
   callToActionButton,
   classNameCallToActionButton,
-  classNameDescription
+  classNameDescription,
+  classNameList
 }: GeneralCardProps) => {
   return (
     <Card className={classNames(styles.generalCard, "cardBorders", cardClassName)}>
       <h3 className={styles.title}>{title}</h3>
-      <p className={classNames(styles.description, classNameDescription)}>{description}</p>
+      {description && (
+        <p className={classNames(styles.description, classNameDescription)}>{description}</p>
+      )}
+      {list && (
+        <ul className={styles.list}>
+          {list.map((item: string, index: number) => {
+            return (
+              <li
+                key={`${title}_list_item_${index}`}
+                className={classNames(styles.listItem, classNameList)}
+              >
+                {item}
+              </li>
+            )
+          })}
+        </ul>
+      )}
       {callToActionButton && (
         <LinkButton
           className={classNames(styles.link, classNameCallToActionButton)}
