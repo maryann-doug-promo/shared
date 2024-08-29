@@ -145,9 +145,9 @@ export const ContactForm = ({ page, classNameFields, classNameSubmitButton }: Co
           )
         })}
         {/* tobsandmaps */}
-        <input className={styles.personal} type="text" name="age" defaultValue={process.env.HONEY_POT_AGE ?? ""} />
-        <input className={styles.personal} type="text" name="height" defaultValue={process.env.HONEY_POT_HEIGHT ?? ""} />
-        <input className={styles.personal} type="text" name="shoe_size" defaultValue={process.env.HONEY_POT_SHOE_SIZE ?? ""} />
+        <input className={styles.personal} type="text" name="age" defaultValue={process.env.NEXT_PUBLIC_HONEY_POT_AGE ?? ""} />
+        <input className={styles.personal} type="text" name="height" defaultValue={process.env.NEXT_PUBLIC_HONEY_POT_HEIGHT ?? ""} />
+        <input className={styles.personal} type="text" name="shoe_size" defaultValue={process.env.NEXT_PUBLIC_HONEY_POT_SHOE_SIZE ?? ""} />
         <SubmitFormButton
           className={classNameSubmitButton}
           text={content.submitButton.text}

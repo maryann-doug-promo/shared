@@ -32,9 +32,9 @@ export const contactAction = async (prevState: any, formData: any) => {
     // REMEMBER: these are just for honeypotting to block bots
     // NOT REAL
     if (
-      contact.age !== (process.env.HONEY_POT_AGE ?? "")
-      || contact.height !== (process.env.HONEY_POT_HEIGHT ?? "")
-      || contact.shoeSize !== (process.env.HONEY_POT_SHOE_SIZE ?? "")
+      contact.age !== (process.env.NEXT_PUBLIC_HONEY_POT_AGE ?? "")
+      || contact.height !== (process.env.NEXT_PUBLIC_HONEY_POT_HEIGHT ?? "")
+      || contact.shoeSize !== (process.env.NEXT_PUBLIC_HONEY_POT_SHOE_SIZE ?? "")
     ) {
       console.error("Spam detected:");
       console.error(JSON.stringify(contact));
