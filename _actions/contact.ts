@@ -21,10 +21,26 @@ export const contactAction = async (prevState: any, formData: any) => {
       email: formData.get("email"),
       preferred_contact: formData.get("preferred_contact"),
       address: formData.get("address"),
-      message: formData.get("message")
+      message: formData.get("message"),
+      // REMEMBER: these are just for honeypotting to block bots
+      // NOT REAL
+      age: formData.get("age"),
+      height: formData.get("height"),
+      shoeSize: formData.get("shoe_size")
     });
 
-    await sendContactEmail(contact);
+    // REMEMBER: these are just for honeypotting to block bots
+    // NOT REAL
+    if (
+      contact.age !== process.env.HONEY_POT_AGE
+      || contact.height !== process.env.HONEY_POT_HEIGHT
+      || contact.shoeSize !== process.env.HONEY_POT_SHOE_SIZE
+    ) {
+      console.error("Spam detected:");
+      console.error(JSON.stringify(contact));
+    } else {
+      await sendContactEmail(contact);
+    }
 
     return {
       message: [
