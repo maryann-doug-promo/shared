@@ -15,6 +15,9 @@ import { sendContactEmail } from "./sendEmail";
 export const contactAction = async (prevState: any, formData: any) => {
   try {
 
+    // recaptcha by google for bots
+    const recaptcha = formData.get("recaptcha");
+
     const contact: ContactType = ContactSchema.parse({
       name: formData.get("name"),
       phone_number: formData.get("phone_number"),
@@ -29,17 +32,26 @@ export const contactAction = async (prevState: any, formData: any) => {
       shoeSize: formData.get("shoe_size")
     });
 
-    // REMEMBER: these are just for honeypotting to block bots
-    // NOT REAL
+
+    // Verifying the google recaptcha stuff
+    // and the honey pots
+    const googleReCaptchaVerificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`;
+    const googleReCaptchaResponse = await fetch(googleReCaptchaVerificationUrl, {
+      method: 'POST',
+    });
+    const googleReCaptchaData = await googleReCaptchaResponse.json();
     if (
-      contact.age !== (process.env.NEXT_PUBLIC_HONEY_POT_AGE ?? "")
-      || contact.height !== ""
-      || contact.shoeSize !== ""
+      googleReCaptchaData.success
+      && googleReCaptchaData.score > 0.5
+      && contact.age === (process.env.NEXT_PUBLIC_HONEY_POT_AGE ?? "")
+      && contact.height === ""
+      && contact.shoeSize === ""
     ) {
+      await sendContactEmail(contact);
+    } else {
       console.error("Spam detected:");
       console.error(JSON.stringify(contact));
-    } else {
-      await sendContactEmail(contact);
+      console.error(`Google recaptcha: `, JSON.stringify(googleReCaptchaData));
     }
 
     return {

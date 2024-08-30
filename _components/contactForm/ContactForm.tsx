@@ -1,5 +1,8 @@
 "use client"
 
+// Google reCaptcha stuff
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { useFormState } from 'react-dom';
@@ -83,8 +86,9 @@ export const ContactForm = ({ page, classNameFields, classNameSubmitButton }: Co
 
   const [contactState, contact] = useFormState(contactAction, initialState);
   const [showMessage, setShowMessage] = useState<boolean>(false);
-
   const formRef = useRef<HTMLFormElement>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [recaptchaToken, setReCaptachToken] = useState<string>("");
 
   const handleFormReset = () => {
     formRef.current?.reset();
@@ -103,6 +107,18 @@ export const ContactForm = ({ page, classNameFields, classNameSubmitButton }: Co
     }
 
   }, [contactState]);
+
+  useEffect(() => {
+    const updateReCaptchaToken = async () => {
+      if (executeRecaptcha) {
+        const token = await executeRecaptcha("submit");
+        setReCaptachToken(token);
+      } else {
+        setReCaptachToken("");
+      }
+    };
+    updateReCaptchaToken();
+  }, [executeRecaptcha]);
 
   return (
     <form
@@ -148,6 +164,8 @@ export const ContactForm = ({ page, classNameFields, classNameSubmitButton }: Co
         <input className={styles.personal} type="text" name="age" defaultValue={process.env.NEXT_PUBLIC_HONEY_POT_AGE ?? ""} />
         <input className={styles.personal} type="text" name="height" />
         <input className={styles.personal} type="text" name="shoe_size" />
+        {/* This is for the reCaptcha with google */}
+        <input type="hidden" name="recaptcha" value={recaptchaToken} />
         <SubmitFormButton
           className={classNameSubmitButton}
           text={content.submitButton.text}
