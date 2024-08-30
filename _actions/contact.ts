@@ -33,8 +33,8 @@ export const contactAction = async (prevState: any, formData: any) => {
     // NOT REAL
     if (
       contact.age !== (process.env.NEXT_PUBLIC_HONEY_POT_AGE ?? "")
-      || contact.height !== (process.env.NEXT_PUBLIC_HONEY_POT_HEIGHT ?? "")
-      || contact.shoeSize !== (process.env.NEXT_PUBLIC_HONEY_POT_SHOE_SIZE ?? "")
+      || contact.height !== ""
+      || contact.shoeSize !== ""
     ) {
       console.error("Spam detected:");
       console.error(JSON.stringify(contact));
