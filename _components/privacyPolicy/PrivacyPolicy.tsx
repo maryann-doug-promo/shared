@@ -28,6 +28,8 @@ export const PrivacyPolicy = ({ businessName, email }: PrivacyPolicyProps) => {
           <li><strong>Name:</strong> Provided by you when submitting a form.</li>
           <li><strong>Email Address:</strong> Provided by you when submitting a form.</li>
           <li><strong>Phone Number:</strong> Provided by you when submitting a form.</li>
+          <li><strong>Preferred Contact:</strong> Provided by you when submitting a form.</li>
+          <li><strong>Address:</strong> Provided by you when submitting a form.</li>
           <li><strong>Message Content:</strong> Any additional information you include in your message.</li>
         </ul>
         <p className={styles.description}>
