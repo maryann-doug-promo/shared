@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 // components
+import { GoogleRecaptchaWrapper } from '../googleRecaptchaWrapper/GoogleRecaptchaWrapper';
 import { LeaveReviewForm } from '../leaveReviewForm/LeaveReviewForm';
 
 import content from '../../content/leaveReview.json';
@@ -31,14 +32,16 @@ export const LeaveReview = ({ classNameButton, classNameForm, buttonText }: Leav
             setLeaveNewReview(false);
           }}
         >
-          <LeaveReviewForm
-            page="reviews"
-            className={classNameForm}
-            classNameButton={classNameButton}
-            handleCloseForm={() => {
-              setLeaveNewReview(false);
-            }}
-          />
+          <GoogleRecaptchaWrapper>
+            <LeaveReviewForm
+              page="reviews"
+              className={classNameForm}
+              classNameButton={classNameButton}
+              handleCloseForm={() => {
+                setLeaveNewReview(false);
+              }}
+            />
+          </GoogleRecaptchaWrapper>
         </SplashScreen>
       ) : (
         <button

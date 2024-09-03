@@ -1,5 +1,8 @@
 "use client"
 
+// Google reCaptcha stuff
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+
 import classNames from 'classnames';
 import { useEffect, useState, useRef } from 'react';
 import { useFormState } from 'react-dom';
@@ -38,6 +41,9 @@ export const LeaveReviewForm = ({ page, className, classNameButton, handleCloseF
 
   const formRef = useRef<HTMLFormElement>(null);
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [recaptchaToken, setReCaptachToken] = useState<string>("");
+
   const handleFormReset = () => {
     formRef.current?.reset();
   }
@@ -57,6 +63,18 @@ export const LeaveReviewForm = ({ page, className, classNameButton, handleCloseF
     }
 
   }, [leaveReviewState, handleCloseForm]);
+
+  useEffect(() => {
+    const updateReCaptchaToken = async () => {
+      if (executeRecaptcha) {
+        const token = await executeRecaptcha("submit");
+        setReCaptachToken(token);
+      } else {
+        setReCaptachToken("");
+      }
+    };
+    updateReCaptchaToken();
+  }, [executeRecaptcha]);
 
   return (
     <form className={classNames(styles.leaveReviewForm, className)} action={leaveReview} ref={formRef}>
@@ -142,6 +160,8 @@ export const LeaveReviewForm = ({ page, className, classNameButton, handleCloseF
             required={true}
           />
         </div>
+        {/* This is for the reCaptcha with google */}
+        <input type="hidden" name="recaptcha" value={recaptchaToken} />
         <SubmitFormButton
           text='Submit Review'
           className={classNameButton}

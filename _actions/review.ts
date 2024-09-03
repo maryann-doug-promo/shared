@@ -11,6 +11,9 @@ import { addReview, setApproval } from "@/shared/lib/db/review";
 // zod schema
 import { ApproveReviewSchema, LeaveReviewSchema } from "../_zodSchemas/review";
 
+// utils
+import { isGoogleReCaptchaSafe } from "../lib/utils";
+
 // actions
 import { sendReviewEmail } from "./sendEmail";
 
@@ -30,6 +33,9 @@ export const leaveReviewAction = async (prevState: any, formData: any) => {
       message: formData.get("message")
     });
 
+    // recaptcha by google for bots
+    const recaptcha = formData.get("recaptcha");
+
     const name = `${first_name} ${last_name.charAt(0)}.`;
 
     const newReview: ReviewType = await addReview({
@@ -38,7 +44,14 @@ export const leaveReviewAction = async (prevState: any, formData: any) => {
       message
     });
 
-    await sendReviewEmail(newReview);
+    // Verifying the google recaptcha stuff
+    const googleRecaptchaIsSafe = await isGoogleReCaptchaSafe(recaptcha);
+    if (googleRecaptchaIsSafe) {
+      await sendReviewEmail(newReview);
+    } else {
+      console.error("SPAM DETECTED:");
+      console.error(JSON.stringify(newReview));
+    }
 
     return {
       message: "Your review has been submitted.",
