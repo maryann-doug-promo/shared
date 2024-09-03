@@ -42,3 +42,30 @@ export const getTimeAgo = (timePosted: Date) => {
   }
   return `${number} ${word} ago`;
 }
+
+export const isGoogleReCaptchaSafe = async (recaptcha: string): Promise<boolean> => {
+
+  try {
+    // Verifying the google recaptcha stuff
+    // and the honey pots
+    const googleReCaptchaVerificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`;
+    const googleReCaptchaResponse = await fetch(googleReCaptchaVerificationUrl, {
+      method: 'POST',
+    });
+    const googleRecaptchaData = await googleReCaptchaResponse.json();
+
+    if (googleRecaptchaData.success && googleRecaptchaData.score && googleRecaptchaData.score > 0.5) {
+      return true;
+    } else {
+      console.error("SPAM DETECTED: Check later for data on who did the spam.");
+      console.error(`Google recaptcha: `);
+      console.error(JSON.stringify(googleRecaptchaData));
+      return false;
+    }
+
+  } catch (err) {
+    console.error("An error occurred while checking the google captcha");
+    console.error(err);
+    return false;
+  }
+}

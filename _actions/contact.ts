@@ -10,6 +10,9 @@ import { ContactSchema } from "../_zodSchemas/contact";
 // actions
 import { sendContactEmail } from "./sendEmail";
 
+// utils
+import { isGoogleReCaptchaSafe } from "../lib/utils";
+
 
 // This is going to send an email to Mary so she can approve the review
 export const contactAction = async (prevState: any, formData: any) => {
@@ -35,14 +38,9 @@ export const contactAction = async (prevState: any, formData: any) => {
 
     // Verifying the google recaptcha stuff
     // and the honey pots
-    const googleReCaptchaVerificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptcha}`;
-    const googleReCaptchaResponse = await fetch(googleReCaptchaVerificationUrl, {
-      method: 'POST',
-    });
-    const googleReCaptchaData = await googleReCaptchaResponse.json();
+    const googleRecaptchaIsSafe = await isGoogleReCaptchaSafe(recaptcha);
     if (
-      googleReCaptchaData.success
-      && googleReCaptchaData.score > 0.5
+      googleRecaptchaIsSafe
       && contact.age === (process.env.NEXT_PUBLIC_HONEY_POT_AGE ?? "")
       && contact.height === ""
       && contact.shoeSize === ""
@@ -51,7 +49,6 @@ export const contactAction = async (prevState: any, formData: any) => {
     } else {
       console.error("Spam detected:");
       console.error(JSON.stringify(contact));
-      console.error(`Google recaptcha: `, JSON.stringify(googleReCaptchaData));
     }
 
     return {
